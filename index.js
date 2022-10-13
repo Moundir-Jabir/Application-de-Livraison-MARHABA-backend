@@ -8,9 +8,11 @@ require('dotenv').config()
 
 //Routers
 const authRouter = require('./routes/auth')
+const userRouter = require('./routes/user')
 
 mongoose.connect(process.env.DATABASE, {
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 }).then(() => console.log('database connected'))
   .catch((e) => console.log('not connect to database', e))
 
@@ -20,6 +22,7 @@ app.use(cookieParser())
 app.use(cors())
 
 app.use('/api/auth', authRouter)
+app.use('/api/user', userRouter)
 
 const port = process.env.PORT || 3000
 app.listen(port, () => {

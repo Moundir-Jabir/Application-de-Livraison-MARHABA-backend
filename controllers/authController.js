@@ -15,15 +15,17 @@ exports.signup = (req, res) => {
     user.save((err, user) => {
         if (err)
             return res.status(400).send(err)
+        const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET)
         transporter.sendMail({
             from: `"Marhaba Application" <${process.env.EMAIL}>`,
             to: user.email,
             subject: "Vérification d'adresse mail pour votre compte Marhaba",
-            html: `<p>cliquer sur ce <a href="http://localhost:4000/api/auth/emailVerification/${user._id}">lien</a> pour vérifier votre adresse mail</p>`
+            html: `<p>cliquer sur ce <a href="http://localhost:4000/api/auth/emailVerification/${token}">lien</a> pour vérifier votre adresse mail</p>`
+        }).then(e => {
+            user.hashed_password = undefined
+            user.salt = undefined
+            return res.json({ user, message: 'An email is sent to your email for verification' })
         })
-        user.hashed_password = undefined
-        user.salt = undefined
-        return res.json({ user, message: 'An email is sent to your email for verification' })
     })
 }
 
@@ -78,4 +80,16 @@ exports.forgetpassword = (req, res) => {
             html: `<p>cliquer sur ce <a href="http://localhost:4000/api/auth/resetpassword/${token}">lien</a> pour réinitialiser votre mot de passe de votre compte Marhaba</p>`
         }).then(e => res.send('An email is sent to reset your password'))
     })
+}
+
+exports.resetpassword = (req, res) => {
+    req.check('password', 'new password is required for reset').notEmpty().isLength({ min: 8, max: 20 }).withMessage('Password must between 8 and 20 caracteres')
+    const errors = req.validationErrors()
+    if (errors)
+        return res.status(400).json({
+            erreur: errors[0].msg
+        })
+    let user = req.profil
+    user.hashed_password = user.cryptPassword(req.body.password)
+    user.save().then(result => res.send(`Your password is reset succesfuly`))
 }

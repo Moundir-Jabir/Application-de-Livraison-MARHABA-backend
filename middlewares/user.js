@@ -1,4 +1,5 @@
 const User = require('../models/User')
+const jwt = require('jsonwebtoken')
 
 exports.userById = (req, res, next, id) => {
     User.findById(id).exec((err, user) => {
@@ -9,4 +10,9 @@ exports.userById = (req, res, next, id) => {
         req.profil = user
         next()
     })
+}
+
+exports.userByToken = (req, res, next, token) => {
+    const payload = jwt.verify(token, process.env.JWT_SECRET)
+    this.userById(req, res, next, payload._id)
 }

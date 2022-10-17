@@ -1,14 +1,6 @@
 const User = require('../models/User')
 const jwt = require('jsonwebtoken')
-const nodemailer = require("nodemailer");
-
-let transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: process.env.EMAIL,
-        pass: process.env.PASSWORDEMAIL
-    },
-});
+const { transporter } = require('../helpers/config')
 
 exports.signup = (req, res) => {
     const user = new User(req.body)
@@ -20,7 +12,7 @@ exports.signup = (req, res) => {
             from: `"Marhaba Application" <${process.env.EMAIL}>`,
             to: user.email,
             subject: "Vérification d'adresse mail pour votre compte Marhaba",
-            html: `<p>cliquer sur ce <a href="http://localhost:4000/api/auth/emailVerification/${token}">lien</a> pour vérifier votre adresse mail</p>`
+            html: `<p>cliquer sur ce <a href="${process.env.HOSTNAME}/api/auth/emailVerification/${token}">lien</a> pour vérifier votre adresse mail</p>`
         }).then(e => {
             user.hashed_password = undefined
             user.salt = undefined
@@ -77,7 +69,7 @@ exports.forgetpassword = (req, res) => {
             from: `"Marhaba Application" <${process.env.EMAIL}>`,
             to: user.email,
             subject: "Réinitialisation de mot de passe pour votre compte Marhaba",
-            html: `<p>cliquer sur ce <a href="http://localhost:4000/api/auth/resetpassword/${token}">lien</a> pour réinitialiser votre mot de passe de votre compte Marhaba</p>`
+            html: `<p>cliquer sur ce <a href="${process.env.HOSTNAME}/api/auth/resetpassword/${token}">lien</a> pour réinitialiser votre mot de passe de votre compte Marhaba</p>`
         }).then(e => res.send('An email is sent to reset your password'))
     })
 }

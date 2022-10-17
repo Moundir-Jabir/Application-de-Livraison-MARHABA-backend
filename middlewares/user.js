@@ -14,5 +14,6 @@ exports.userById = (req, res, next, id) => {
 
 exports.userByToken = (req, res, next, token) => {
     const payload = jwt.verify(token, process.env.JWT_SECRET)
+    req.codeReset = payload.codeReset
     this.userById(req, res, next, payload._id)
 }

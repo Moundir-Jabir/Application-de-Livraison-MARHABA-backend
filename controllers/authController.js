@@ -1,6 +1,7 @@
 const User = require('../models/User')
 const jwt = require('jsonwebtoken')
 const { transporter } = require('../helpers/config')
+const { v1 } = require('uuid')
 
 exports.signup = (req, res) => {
     const user = new User(req.body)
@@ -64,24 +65,32 @@ exports.forgetpassword = (req, res) => {
             return res.status(400).json({
                 erreur: 'Not found user with this email'
             })
-        const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: 600 })
-        transporter.sendMail({
-            from: `"Marhaba Application" <${process.env.EMAIL}>`,
-            to: user.email,
-            subject: "Réinitialisation de mot de passe pour votre compte Marhaba",
-            html: `<p>cliquer sur ce <a href="${process.env.HOSTNAME}/api/auth/resetpassword/${token}">lien</a> pour réinitialiser votre mot de passe de votre compte Marhaba</p>`
-        }).then(e => res.send('An email is sent to reset your password'))
+        user.codeReset = v1()
+        user.save().then((e) => {
+            const token = jwt.sign({ _id: user._id, codeReset: user.codeReset }, process.env.JWT_SECRET, { expiresIn: 600 })
+            transporter.sendMail({
+                from: `"Marhaba Application" <${process.env.EMAIL}>`,
+                to: user.email,
+                subject: "Réinitialisation de mot de passe pour votre compte Marhaba",
+                html: `<p>cliquer sur ce <a href="${process.env.HOSTNAME}/api/auth/resetpassword/${token}">lien</a> pour réinitialiser votre mot de passe de votre compte Marhaba</p>`
+            }).then(e => res.send('An email is sent to reset your password'))
+        })
     })
 }
 
 exports.resetpassword = (req, res) => {
-    req.check('password', 'new password is required for reset').notEmpty().isLength({ min: 8, max: 20 }).withMessage('Password must between 8 and 20 caracteres')
-    const errors = req.validationErrors()
-    if (errors)
-        return res.status(400).json({
-            erreur: errors[0].msg
-        })
-    let user = req.profil
-    user.hashed_password = user.cryptPassword(req.body.password)
-    user.save().then(result => res.send(`Your password is reset succesfuly`))
+    if(req.codeReset == req.profil.codeReset){
+        req.check('password', 'new password is required for reset').notEmpty().isLength({ min: 8, max: 20 }).withMessage('Password must between 8 and 20 caracteres')
+        const errors = req.validationErrors()
+        if (errors)
+            return res.status(400).json({
+                erreur: errors[0].msg
+            })
+        let user = req.profil
+        user.hashed_password = user.cryptPassword(req.body.password)
+        user.save().then(result => res.send(`Your password is reset succesfuly`))
+    }
+    else{
+        return res.status(400).send('Invalid Token')
+    }
 }

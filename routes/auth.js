@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const { userSignupValidator } = require('../middlewares/userValidator')
 const { userByToken } = require('../middlewares/user')
-const { signup, signin, signout, validateMail, forgetpassword, resetpassword } = require('../controllers/authController')
+const { signup, signin, signout, validateMail, forgetpassword, resetpassword } = require('../Controllers/authController')
 
 router.post('/register', userSignupValidator, signup)
 router.post('/login', signin)

@@ -1,10 +1,10 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
 const expressValidator = require('express-validator')
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
 const mongoose = require('mongoose')
-require('dotenv').config()
 
 //Routers
 const authRouter = require('./routes/auth')

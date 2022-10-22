@@ -20,7 +20,11 @@ app.use(express.json())
 app.use(expressValidator())
 app.use(cookieParser())
 app.use(cors())
+app.use(express.static("public"))
 
+app.get('/api/docs', (req, res) => {
+  res.sendFile(__dirname + "/public/docs/index.html")
+})
 app.use('/api/auth', authRouter)
 app.use('/api/user', userRouter)
 

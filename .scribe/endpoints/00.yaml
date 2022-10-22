@@ -1,0 +1,295 @@
+name: Endpoints
+endpoints:
+  - uri: /api/auth/register
+    httpMethods:
+      - POST
+    metadata:
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: {}
+    queryParameters: {}
+    bodyParameters:
+      name:
+        name: name
+        type: string
+        example: harum
+        required: true
+        description: the name of user
+        __fields: {}
+      email:
+        name: email
+        type: string
+        example: harum
+        required: true
+        description: ''
+        __fields: {}
+      password:
+        name: password
+        type: string
+        example: harum
+        required: true
+        description: ''
+        __fields: {}
+      role:
+        name: role
+        type: string
+        example: harum
+        required: true
+        description: manager or livreur or client
+        __fields: {}
+    responses: []
+    responseFields: {}
+  - uri: /api/auth/login
+    httpMethods:
+      - POST
+    metadata:
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: {}
+    queryParameters: {}
+    bodyParameters:
+      email:
+        name: email
+        type: string
+        example: harum
+        required: true
+        description: ''
+        __fields: {}
+      password:
+        name: password
+        type: string
+        example: harum
+        required: true
+        description: ''
+        __fields: {}
+    responses: []
+    responseFields: {}
+  - uri: /api/auth/logout
+    httpMethods:
+      - GET
+    metadata:
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: {}
+    queryParameters: {}
+    bodyParameters: {}
+    responses:
+      - status: 200
+        description: ''
+        headers:
+          access-control-allow-origin: '*'
+          set-cookie:
+            - 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT'
+          content-type: application/json; charset=utf-8
+        content: |-
+          {
+              "message": "User Signout"
+          }
+    responseFields: {}
+  - uri: '/api/auth/emailVerification/:token'
+    httpMethods:
+      - GET
+    metadata:
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      token:
+        name: token
+        example: ut
+        required: true
+        type: string
+        description: ''
+        match: ':token'
+    queryParameters: {}
+    bodyParameters: {}
+    responses:
+      - status: 500
+        description: ''
+        headers:
+          access-control-allow-origin: '*'
+          content-security-policy: default-src 'none'
+          x-content-type-options: nosniff
+          content-type: text/html; charset=utf-8
+        content: >
+          <!DOCTYPE html>
+
+          <html lang="en">
+
+          <head>
+
+          <meta charset="utf-8">
+
+          <title>Error</title>
+
+          </head>
+
+          <body>
+
+          <pre>JsonWebTokenError: jwt malformed<br> &nbsp; &nbsp;at
+          Object.module.exports [as verify]
+          (/Users/elmondhirjabir/Desktop/Application-de-Livraison-MARHABA-backend/node_modules/jsonwebtoken/verify.js:63:17)<br>
+          &nbsp; &nbsp;at exports.userByToken
+          (/Users/elmondhirjabir/Desktop/Application-de-Livraison-MARHABA-backend/middlewares/user.js:16:25)<br>
+          &nbsp; &nbsp;at paramCallback
+          (/Users/elmondhirjabir/Desktop/Application-de-Livraison-MARHABA-backend/node_modules/express/lib/router/index.js:415:7)<br>
+          &nbsp; &nbsp;at param
+          (/Users/elmondhirjabir/Desktop/Application-de-Livraison-MARHABA-backend/node_modules/express/lib/router/index.js:395:5)<br>
+          &nbsp; &nbsp;at Function.process_params
+          (/Users/elmondhirjabir/Desktop/Application-de-Livraison-MARHABA-backend/node_modules/express/lib/router/index.js:421:3)<br>
+          &nbsp; &nbsp;at next
+          (/Users/elmondhirjabir/Desktop/Application-de-Livraison-MARHABA-backend/node_modules/express/lib/router/index.js:280:10)<br>
+          &nbsp; &nbsp;at Function.handle
+          (/Users/elmondhirjabir/Desktop/Application-de-Livraison-MARHABA-backend/node_modules/express/lib/router/index.js:175:3)<br>
+          &nbsp; &nbsp;at router
+          (/Users/elmondhirjabir/Desktop/Application-de-Livraison-MARHABA-backend/node_modules/express/lib/router/index.js:47:12)<br>
+          &nbsp; &nbsp;at Layer.handle [as handle_request]
+          (/Users/elmondhirjabir/Desktop/Application-de-Livraison-MARHABA-backend/node_modules/express/lib/router/layer.js:95:5)<br>
+          &nbsp; &nbsp;at trim_prefix
+          (/Users/elmondhirjabir/Desktop/Application-de-Livraison-MARHABA-backend/node_modules/express/lib/router/index.js:328:13)</pre>
+
+          </body>
+
+          </html>
+    responseFields: {}
+  - uri: /api/auth/forgetpassword
+    httpMethods:
+      - POST
+    metadata:
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: {}
+    queryParameters: {}
+    bodyParameters:
+      email:
+        name: email
+        type: string
+        example: est
+        required: true
+        description: ''
+        __fields: {}
+    responses: []
+    responseFields: {}
+  - uri: '/api/auth/resetpassword/:token'
+    httpMethods:
+      - PATCH
+    metadata:
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      token:
+        name: token
+        example: quidem
+        required: true
+        type: string
+        description: ''
+        match: ':token'
+    queryParameters: {}
+    bodyParameters:
+      password:
+        name: password
+        type: string
+        example: eligendi
+        required: true
+        description: ''
+        __fields: {}
+    responses: []
+    responseFields: {}
+  - uri: '/api/user/livreur/:userID'
+    httpMethods:
+      - GET
+    metadata:
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      userID:
+        name: userID
+        example: eligendi
+        required: true
+        type: string
+        description: ''
+        match: ':userID'
+    queryParameters: {}
+    bodyParameters: {}
+    responses:
+      - status: 404
+        description: ''
+        headers:
+          access-control-allow-origin: '*'
+          content-type: application/json; charset=utf-8
+        content: |-
+          {
+              "error": "User not found"
+          }
+    responseFields: {}
+  - uri: '/api/user/client/:userID'
+    httpMethods:
+      - GET
+    metadata:
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      userID:
+        name: userID
+        example: quae
+        required: true
+        type: string
+        description: ''
+        match: ':userID'
+    queryParameters: {}
+    bodyParameters: {}
+    responses:
+      - status: 404
+        description: ''
+        headers:
+          access-control-allow-origin: '*'
+          content-type: application/json; charset=utf-8
+        content: |-
+          {
+              "error": "User not found"
+          }
+    responseFields: {}
+  - uri: '/api/user/manager/:userID'
+    httpMethods:
+      - GET
+    metadata:
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      userID:
+        name: userID
+        example: est
+        required: true
+        type: string
+        description: ''
+        match: ':userID'
+    queryParameters: {}
+    bodyParameters: {}
+    responses:
+      - status: 404
+        description: ''
+        headers:
+          access-control-allow-origin: '*'
+          content-type: application/json; charset=utf-8
+        content: |-
+          {
+              "error": "User not found"
+          }
+    responseFields: {}

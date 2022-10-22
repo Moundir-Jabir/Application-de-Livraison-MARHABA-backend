@@ -9,7 +9,7 @@ router.post('/login', signin)
 router.get('/logout', signout)
 router.get('/emailVerification/:token', validateMail)
 router.post('/forgetpassword', forgetpassword)
-router.post('/resetpassword/:token', resetpassword)
+router.patch('/resetpassword/:token', resetpassword)
 
 router.param('token', userByToken)
 

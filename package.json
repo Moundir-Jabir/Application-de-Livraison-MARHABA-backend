@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Moundir-Jabir/Application-de-Livraison-MARHABA-backend#readme",
   "dependencies": {
+    "@knuckleswtf/scribe-express": "^2.0.2",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",

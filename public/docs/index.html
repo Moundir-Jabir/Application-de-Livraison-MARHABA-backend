@@ -1,0 +1,1450 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Application De Livraison MARHABA Backend Documentation</title>
+
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/theme-default.style.css" media="screen">
+    <link rel="stylesheet" href="css/theme-default.print.css" media="print">
+    <script src="js/theme-default-2.0.2.js"></script>
+
+    <link rel="stylesheet"
+          href="//unpkg.com/@highlightjs/cdn-assets@10.7.2/styles/obsidian.min.css">
+    <script src="//unpkg.com/@highlightjs/cdn-assets@10.7.2/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+    <script>
+    var baseUrl = "https://marhaba-backend.herokuapp.com";
+    </script>
+    <script src="js/tryitout-2.0.2.js"></script>
+    
+</head>
+
+<body data-languages="[&#34;bash&#34;,&#34;javascript&#34;]">
+<a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="navbar-image" />
+      </span>
+</a>
+<div class="tocify-wrapper">
+    
+    
+        <div class="lang-selector">
+            
+                <a href="#" data-language-name="bash">bash</a>
+            
+                <a href="#" data-language-name="javascript">javascript</a>
+            
+        </div>
+    
+    <div class="search">
+        <input type="text" class="search" id="input-search" placeholder="Search">
+    </div>
+    <ul class="search-results"></ul>
+
+    <ul id="toc">
+    </ul>
+
+    
+        <ul class="toc-footer" id="toc-footer">
+            
+                <li><a href="collection.json">View Postman collection</a></li>
+            
+                <li><a href="http://github.com/knuckleswtf/scribe-js">Documentation powered by Scribe ✍</a></li>
+            
+        </ul>
+    
+        <ul class="toc-footer" id="last-updated">
+            <li>Last updated: October 22, 2022</li>
+        </ul>
+</div>
+<div class="page-wrapper">
+    <div class="dark-box"></div>
+    <div class="content">
+        <h1 id="introduction">Introduction</h1>
+<p>This documentation aims to provide all the information you need to work with our API.</p>
+<aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
+You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
+<blockquote>
+  <p>Base URL:</p>
+</blockquote>
+<pre><code class="yaml language-yaml">https://marhaba-backend.herokuapp.com
+</code></pre>
+
+        <h1 id="authenticatingrequests">Authenticating requests</h1>
+<p>This API is not authenticated.</p>
+
+        
+    <h1 id="Endpoints">Endpoints</h1>
+    <p>
+        
+    </p>
+
+    
+        
+<h2 id="Endpoints-POST-api-auth-register">POST /api/auth/register</h2>
+
+<p>
+
+</p>
+
+
+
+<span id="example-requests-POST-api-auth-register">
+<blockquote>Example request:</blockquote>
+
+
+
+<pre><code class="bash language-bash">curl --request POST \
+    "https://marhaba-backend.herokuapp.com/api/auth/register"  \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data '{
+    "name": "harum",
+    "email": "harum",
+    "password": "harum",
+    "role": "harum"
+}'
+</code></pre>
+
+
+
+<pre><code class="javascript language-javascript">const url = new URL(
+    "https://marhaba-backend.herokuapp.com/api/auth/register"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+const body = {
+    "name": "harum",
+    "email": "harum",
+    "password": "harum",
+    "role": "harum"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify(body),
+})
+.then(response =&gt; response.json())
+.then(json =&gt; console.log(json));
+</code></pre>
+
+
+</span>
+
+<span id="example-responses-POST-api-auth-register">
+
+</span>
+<span id="execution-results-POST-api-auth-register" hidden>
+    <blockquote>Received response<span id="execution-response-status-POST-api-auth-register"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POST-api-auth-register"></code></pre>
+</span>
+<span id="execution-error-POST-api-auth-register" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POST-api-auth-register"></code></pre>
+</span>
+
+<form id="form-POST-api-auth-register"
+      data-method="POST"
+      data-path="/api/auth/register"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{&#34;Content-Type&#34;:&#34;application/json&#34;,&#34;Accept&#34;:&#34;application/json&#34;}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POST-api-auth-register', this);">
+<h3>
+    Request&nbsp;
+    
+    <button
+            type="button"
+            style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+            id="btn-tryout-POST-api-auth-register"
+            onclick="tryItOut('POST-api-auth-register');">Try it out ⚡</button>
+    <button
+            type="button"
+            style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+            id="btn-canceltryout-POST-api-auth-register"
+            onclick="cancelTryOut('POST-api-auth-register');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button
+            type="submit"
+            style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+            id="btn-executetryout-POST-api-auth-register" hidden>Send Request 💥</button>
+    
+</h3>
+
+<p>
+    <small class="badge badge-black">POST</small>
+
+
+    <b><code>/api/auth/register</code></b>
+</p>
+
+
+
+
+
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+
+    
+    
+            <p>
+                <b><code>name</code></b>&nbsp;&nbsp;<small>string</small>
+
+
+
+
+    
+        <input type="text"
+               name="name"
+               data-endpoint="POST-api-auth-register"
+               data-component="body" required hidden>
+    
+
+<br>
+<p>the name of user</p>
+            </p>
+        
+
+    
+    
+            <p>
+                <b><code>email</code></b>&nbsp;&nbsp;<small>string</small>
+
+
+
+
+    
+        <input type="text"
+               name="email"
+               data-endpoint="POST-api-auth-register"
+               data-component="body" required hidden>
+    
+
+<br>
+
+            </p>
+        
+
+    
+    
+            <p>
+                <b><code>password</code></b>&nbsp;&nbsp;<small>string</small>
+
+
+
+
+    
+        <input type="text"
+               name="password"
+               data-endpoint="POST-api-auth-register"
+               data-component="body" required hidden>
+    
+
+<br>
+
+            </p>
+        
+
+    
+    
+            <p>
+                <b><code>role</code></b>&nbsp;&nbsp;<small>string</small>
+
+
+
+
+    
+        <input type="text"
+               name="role"
+               data-endpoint="POST-api-auth-register"
+               data-component="body" required hidden>
+    
+
+<br>
+<p>manager or livreur or client</p>
+            </p>
+        
+
+
+</form>
+
+
+
+    
+        
+<h2 id="Endpoints-POST-api-auth-login">POST /api/auth/login</h2>
+
+<p>
+
+</p>
+
+
+
+<span id="example-requests-POST-api-auth-login">
+<blockquote>Example request:</blockquote>
+
+
+
+<pre><code class="bash language-bash">curl --request POST \
+    "https://marhaba-backend.herokuapp.com/api/auth/login"  \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data '{
+    "email": "harum",
+    "password": "harum"
+}'
+</code></pre>
+
+
+
+<pre><code class="javascript language-javascript">const url = new URL(
+    "https://marhaba-backend.herokuapp.com/api/auth/login"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+const body = {
+    "email": "harum",
+    "password": "harum"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify(body),
+})
+.then(response =&gt; response.json())
+.then(json =&gt; console.log(json));
+</code></pre>
+
+
+</span>
+
+<span id="example-responses-POST-api-auth-login">
+
+</span>
+<span id="execution-results-POST-api-auth-login" hidden>
+    <blockquote>Received response<span id="execution-response-status-POST-api-auth-login"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POST-api-auth-login"></code></pre>
+</span>
+<span id="execution-error-POST-api-auth-login" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POST-api-auth-login"></code></pre>
+</span>
+
+<form id="form-POST-api-auth-login"
+      data-method="POST"
+      data-path="/api/auth/login"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{&#34;Content-Type&#34;:&#34;application/json&#34;,&#34;Accept&#34;:&#34;application/json&#34;}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POST-api-auth-login', this);">
+<h3>
+    Request&nbsp;
+    
+    <button
+            type="button"
+            style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+            id="btn-tryout-POST-api-auth-login"
+            onclick="tryItOut('POST-api-auth-login');">Try it out ⚡</button>
+    <button
+            type="button"
+            style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+            id="btn-canceltryout-POST-api-auth-login"
+            onclick="cancelTryOut('POST-api-auth-login');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button
+            type="submit"
+            style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+            id="btn-executetryout-POST-api-auth-login" hidden>Send Request 💥</button>
+    
+</h3>
+
+<p>
+    <small class="badge badge-black">POST</small>
+
+
+    <b><code>/api/auth/login</code></b>
+</p>
+
+
+
+
+
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+
+    
+    
+            <p>
+                <b><code>email</code></b>&nbsp;&nbsp;<small>string</small>
+
+
+
+
+    
+        <input type="text"
+               name="email"
+               data-endpoint="POST-api-auth-login"
+               data-component="body" required hidden>
+    
+
+<br>
+
+            </p>
+        
+
+    
+    
+            <p>
+                <b><code>password</code></b>&nbsp;&nbsp;<small>string</small>
+
+
+
+
+    
+        <input type="text"
+               name="password"
+               data-endpoint="POST-api-auth-login"
+               data-component="body" required hidden>
+    
+
+<br>
+
+            </p>
+        
+
+
+</form>
+
+
+
+    
+        
+<h2 id="Endpoints-GET-api-auth-logout">GET /api/auth/logout</h2>
+
+<p>
+
+</p>
+
+
+
+<span id="example-requests-GET-api-auth-logout">
+<blockquote>Example request:</blockquote>
+
+
+
+<pre><code class="bash language-bash">curl --request GET \
+    --get "https://marhaba-backend.herokuapp.com/api/auth/logout"  \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"
+</code></pre>
+
+
+
+<pre><code class="javascript language-javascript">const url = new URL(
+    "https://marhaba-backend.herokuapp.com/api/auth/logout"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+.then(response =&gt; response.json())
+.then(json =&gt; console.log(json));
+</code></pre>
+
+
+</span>
+
+<span id="example-responses-GET-api-auth-logout">
+
+
+<blockquote>Example response (200):</blockquote>
+
+
+<details class="annotation">
+    <summary>
+        <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+    </summary>
+    <pre><code class="language-http">
+access-control-allow-origin: *
+set-cookie: token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT
+content-type: application/json; charset=utf-8 </code></pre>
+</details> 
+
+<pre>
+ 
+<!-- If response is a JSON string, prettify it. Otherwise, just print it -->
+<code class="language-json">{
+    "message": "User Signout"
+}</code>
+ </pre>
+
+
+</span>
+<span id="execution-results-GET-api-auth-logout" hidden>
+    <blockquote>Received response<span id="execution-response-status-GET-api-auth-logout"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GET-api-auth-logout"></code></pre>
+</span>
+<span id="execution-error-GET-api-auth-logout" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GET-api-auth-logout"></code></pre>
+</span>
+
+<form id="form-GET-api-auth-logout"
+      data-method="GET"
+      data-path="/api/auth/logout"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{&#34;Content-Type&#34;:&#34;application/json&#34;,&#34;Accept&#34;:&#34;application/json&#34;}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GET-api-auth-logout', this);">
+<h3>
+    Request&nbsp;
+    
+    <button
+            type="button"
+            style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+            id="btn-tryout-GET-api-auth-logout"
+            onclick="tryItOut('GET-api-auth-logout');">Try it out ⚡</button>
+    <button
+            type="button"
+            style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+            id="btn-canceltryout-GET-api-auth-logout"
+            onclick="cancelTryOut('GET-api-auth-logout');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button
+            type="submit"
+            style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+            id="btn-executetryout-GET-api-auth-logout" hidden>Send Request 💥</button>
+    
+</h3>
+
+<p>
+    <small class="badge badge-green">GET</small>
+
+
+    <b><code>/api/auth/logout</code></b>
+</p>
+
+
+
+
+
+</form>
+
+
+
+    
+        
+<h2 id="Endpoints-GET-api-auth-emailVerification-token">GET /api/auth/emailVerification/:token</h2>
+
+<p>
+
+</p>
+
+
+
+<span id="example-requests-GET-api-auth-emailVerification--token">
+<blockquote>Example request:</blockquote>
+
+
+
+<pre><code class="bash language-bash">curl --request GET \
+    --get "https://marhaba-backend.herokuapp.com/api/auth/emailVerification/ut"  \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"
+</code></pre>
+
+
+
+<pre><code class="javascript language-javascript">const url = new URL(
+    "https://marhaba-backend.herokuapp.com/api/auth/emailVerification/ut"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+.then(response =&gt; response.json())
+.then(json =&gt; console.log(json));
+</code></pre>
+
+
+</span>
+
+<span id="example-responses-GET-api-auth-emailVerification--token">
+
+
+<blockquote>Example response (500):</blockquote>
+
+
+<details class="annotation">
+    <summary>
+        <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+    </summary>
+    <pre><code class="language-http">
+access-control-allow-origin: *
+content-security-policy: default-src 'none'
+x-content-type-options: nosniff
+content-type: text/html; charset=utf-8 </code></pre>
+</details> 
+
+<pre>
+ 
+<!-- If response is a JSON string, prettify it. Otherwise, just print it -->
+<code class="language-json"><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</title>
+</head>
+<body>
+<pre>JsonWebTokenError: jwt malformed<br> &nbsp; &nbsp;at Object.module.exports [as verify] (/Users/elmondhirjabir/Desktop/Application-de-Livraison-MARHABA-backend/node_modules/jsonwebtoken/verify.js:63:17)<br> &nbsp; &nbsp;at exports.userByToken (/Users/elmondhirjabir/Desktop/Application-de-Livraison-MARHABA-backend/middlewares/user.js:16:25)<br> &nbsp; &nbsp;at paramCallback (/Users/elmondhirjabir/Desktop/Application-de-Livraison-MARHABA-backend/node_modules/express/lib/router/index.js:415:7)<br> &nbsp; &nbsp;at param (/Users/elmondhirjabir/Desktop/Application-de-Livraison-MARHABA-backend/node_modules/express/lib/router/index.js:395:5)<br> &nbsp; &nbsp;at Function.process_params (/Users/elmondhirjabir/Desktop/Application-de-Livraison-MARHABA-backend/node_modules/express/lib/router/index.js:421:3)<br> &nbsp; &nbsp;at next (/Users/elmondhirjabir/Desktop/Application-de-Livraison-MARHABA-backend/node_modules/express/lib/router/index.js:280:10)<br> &nbsp; &nbsp;at Function.handle (/Users/elmondhirjabir/Desktop/Application-de-Livraison-MARHABA-backend/node_modules/express/lib/router/index.js:175:3)<br> &nbsp; &nbsp;at router (/Users/elmondhirjabir/Desktop/Application-de-Livraison-MARHABA-backend/node_modules/express/lib/router/index.js:47:12)<br> &nbsp; &nbsp;at Layer.handle [as handle_request] (/Users/elmondhirjabir/Desktop/Application-de-Livraison-MARHABA-backend/node_modules/express/lib/router/layer.js:95:5)<br> &nbsp; &nbsp;at trim_prefix (/Users/elmondhirjabir/Desktop/Application-de-Livraison-MARHABA-backend/node_modules/express/lib/router/index.js:328:13)</pre>
+</body>
+</html>
+</code>
+ </pre>
+
+
+</span>
+<span id="execution-results-GET-api-auth-emailVerification--token" hidden>
+    <blockquote>Received response<span id="execution-response-status-GET-api-auth-emailVerification--token"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GET-api-auth-emailVerification--token"></code></pre>
+</span>
+<span id="execution-error-GET-api-auth-emailVerification--token" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GET-api-auth-emailVerification--token"></code></pre>
+</span>
+
+<form id="form-GET-api-auth-emailVerification--token"
+      data-method="GET"
+      data-path="/api/auth/emailVerification/:token"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{&#34;Content-Type&#34;:&#34;application/json&#34;,&#34;Accept&#34;:&#34;application/json&#34;}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GET-api-auth-emailVerification--token', this);">
+<h3>
+    Request&nbsp;
+    
+    <button
+            type="button"
+            style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+            id="btn-tryout-GET-api-auth-emailVerification--token"
+            onclick="tryItOut('GET-api-auth-emailVerification--token');">Try it out ⚡</button>
+    <button
+            type="button"
+            style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+            id="btn-canceltryout-GET-api-auth-emailVerification--token"
+            onclick="cancelTryOut('GET-api-auth-emailVerification--token');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button
+            type="submit"
+            style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+            id="btn-executetryout-GET-api-auth-emailVerification--token" hidden>Send Request 💥</button>
+    
+</h3>
+
+<p>
+    <small class="badge badge-green">GET</small>
+
+
+    <b><code>/api/auth/emailVerification/:token</code></b>
+</p>
+
+
+
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+
+
+<p>
+<b><code>token</code></b>&nbsp;&nbsp;<small>string</small>
+
+
+
+
+    
+        <input type="text"
+               name="token"
+               data-endpoint="GET-api-auth-emailVerification--token"
+               data-component="url" required hidden>
+    
+
+<br>
+
+</p>
+
+
+
+
+</form>
+
+
+
+    
+        
+<h2 id="Endpoints-POST-api-auth-forgetpassword">POST /api/auth/forgetpassword</h2>
+
+<p>
+
+</p>
+
+
+
+<span id="example-requests-POST-api-auth-forgetpassword">
+<blockquote>Example request:</blockquote>
+
+
+
+<pre><code class="bash language-bash">curl --request POST \
+    "https://marhaba-backend.herokuapp.com/api/auth/forgetpassword"  \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data '{
+    "email": "est"
+}'
+</code></pre>
+
+
+
+<pre><code class="javascript language-javascript">const url = new URL(
+    "https://marhaba-backend.herokuapp.com/api/auth/forgetpassword"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+const body = {
+    "email": "est"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify(body),
+})
+.then(response =&gt; response.json())
+.then(json =&gt; console.log(json));
+</code></pre>
+
+
+</span>
+
+<span id="example-responses-POST-api-auth-forgetpassword">
+
+</span>
+<span id="execution-results-POST-api-auth-forgetpassword" hidden>
+    <blockquote>Received response<span id="execution-response-status-POST-api-auth-forgetpassword"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POST-api-auth-forgetpassword"></code></pre>
+</span>
+<span id="execution-error-POST-api-auth-forgetpassword" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POST-api-auth-forgetpassword"></code></pre>
+</span>
+
+<form id="form-POST-api-auth-forgetpassword"
+      data-method="POST"
+      data-path="/api/auth/forgetpassword"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{&#34;Content-Type&#34;:&#34;application/json&#34;,&#34;Accept&#34;:&#34;application/json&#34;}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POST-api-auth-forgetpassword', this);">
+<h3>
+    Request&nbsp;
+    
+    <button
+            type="button"
+            style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+            id="btn-tryout-POST-api-auth-forgetpassword"
+            onclick="tryItOut('POST-api-auth-forgetpassword');">Try it out ⚡</button>
+    <button
+            type="button"
+            style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+            id="btn-canceltryout-POST-api-auth-forgetpassword"
+            onclick="cancelTryOut('POST-api-auth-forgetpassword');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button
+            type="submit"
+            style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+            id="btn-executetryout-POST-api-auth-forgetpassword" hidden>Send Request 💥</button>
+    
+</h3>
+
+<p>
+    <small class="badge badge-black">POST</small>
+
+
+    <b><code>/api/auth/forgetpassword</code></b>
+</p>
+
+
+
+
+
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+
+    
+    
+            <p>
+                <b><code>email</code></b>&nbsp;&nbsp;<small>string</small>
+
+
+
+
+    
+        <input type="text"
+               name="email"
+               data-endpoint="POST-api-auth-forgetpassword"
+               data-component="body" required hidden>
+    
+
+<br>
+
+            </p>
+        
+
+
+</form>
+
+
+
+    
+        
+<h2 id="Endpoints-PATCH-api-auth-resetpassword-token">PATCH /api/auth/resetpassword/:token</h2>
+
+<p>
+
+</p>
+
+
+
+<span id="example-requests-PATCH-api-auth-resetpassword--token">
+<blockquote>Example request:</blockquote>
+
+
+
+<pre><code class="bash language-bash">curl --request PATCH \
+    "https://marhaba-backend.herokuapp.com/api/auth/resetpassword/quidem"  \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data '{
+    "password": "eligendi"
+}'
+</code></pre>
+
+
+
+<pre><code class="javascript language-javascript">const url = new URL(
+    "https://marhaba-backend.herokuapp.com/api/auth/resetpassword/quidem"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+const body = {
+    "password": "eligendi"
+}
+
+fetch(url, {
+    method: "PATCH",
+    headers: headers,
+    body: JSON.stringify(body),
+})
+.then(response =&gt; response.json())
+.then(json =&gt; console.log(json));
+</code></pre>
+
+
+</span>
+
+<span id="example-responses-PATCH-api-auth-resetpassword--token">
+
+</span>
+<span id="execution-results-PATCH-api-auth-resetpassword--token" hidden>
+    <blockquote>Received response<span id="execution-response-status-PATCH-api-auth-resetpassword--token"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-PATCH-api-auth-resetpassword--token"></code></pre>
+</span>
+<span id="execution-error-PATCH-api-auth-resetpassword--token" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PATCH-api-auth-resetpassword--token"></code></pre>
+</span>
+
+<form id="form-PATCH-api-auth-resetpassword--token"
+      data-method="PATCH"
+      data-path="/api/auth/resetpassword/:token"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{&#34;Content-Type&#34;:&#34;application/json&#34;,&#34;Accept&#34;:&#34;application/json&#34;}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PATCH-api-auth-resetpassword--token', this);">
+<h3>
+    Request&nbsp;
+    
+    <button
+            type="button"
+            style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+            id="btn-tryout-PATCH-api-auth-resetpassword--token"
+            onclick="tryItOut('PATCH-api-auth-resetpassword--token');">Try it out ⚡</button>
+    <button
+            type="button"
+            style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+            id="btn-canceltryout-PATCH-api-auth-resetpassword--token"
+            onclick="cancelTryOut('PATCH-api-auth-resetpassword--token');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button
+            type="submit"
+            style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+            id="btn-executetryout-PATCH-api-auth-resetpassword--token" hidden>Send Request 💥</button>
+    
+</h3>
+
+<p>
+    <small class="badge badge-purple">PATCH</small>
+
+
+    <b><code>/api/auth/resetpassword/:token</code></b>
+</p>
+
+
+
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+
+
+<p>
+<b><code>token</code></b>&nbsp;&nbsp;<small>string</small>
+
+
+
+
+    
+        <input type="text"
+               name="token"
+               data-endpoint="PATCH-api-auth-resetpassword--token"
+               data-component="url" required hidden>
+    
+
+<br>
+
+</p>
+
+
+
+
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+
+    
+    
+            <p>
+                <b><code>password</code></b>&nbsp;&nbsp;<small>string</small>
+
+
+
+
+    
+        <input type="text"
+               name="password"
+               data-endpoint="PATCH-api-auth-resetpassword--token"
+               data-component="body" required hidden>
+    
+
+<br>
+
+            </p>
+        
+
+
+</form>
+
+
+
+    
+        
+<h2 id="Endpoints-GET-api-user-livreur-userID">GET /api/user/livreur/:userID</h2>
+
+<p>
+
+</p>
+
+
+
+<span id="example-requests-GET-api-user-livreur--userID">
+<blockquote>Example request:</blockquote>
+
+
+
+<pre><code class="bash language-bash">curl --request GET \
+    --get "https://marhaba-backend.herokuapp.com/api/user/livreur/eligendi"  \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"
+</code></pre>
+
+
+
+<pre><code class="javascript language-javascript">const url = new URL(
+    "https://marhaba-backend.herokuapp.com/api/user/livreur/eligendi"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+.then(response =&gt; response.json())
+.then(json =&gt; console.log(json));
+</code></pre>
+
+
+</span>
+
+<span id="example-responses-GET-api-user-livreur--userID">
+
+
+<blockquote>Example response (404):</blockquote>
+
+
+<details class="annotation">
+    <summary>
+        <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+    </summary>
+    <pre><code class="language-http">
+access-control-allow-origin: *
+content-type: application/json; charset=utf-8 </code></pre>
+</details> 
+
+<pre>
+ 
+<!-- If response is a JSON string, prettify it. Otherwise, just print it -->
+<code class="language-json">{
+    "error": "User not found"
+}</code>
+ </pre>
+
+
+</span>
+<span id="execution-results-GET-api-user-livreur--userID" hidden>
+    <blockquote>Received response<span id="execution-response-status-GET-api-user-livreur--userID"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GET-api-user-livreur--userID"></code></pre>
+</span>
+<span id="execution-error-GET-api-user-livreur--userID" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GET-api-user-livreur--userID"></code></pre>
+</span>
+
+<form id="form-GET-api-user-livreur--userID"
+      data-method="GET"
+      data-path="/api/user/livreur/:userID"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{&#34;Content-Type&#34;:&#34;application/json&#34;,&#34;Accept&#34;:&#34;application/json&#34;}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GET-api-user-livreur--userID', this);">
+<h3>
+    Request&nbsp;
+    
+    <button
+            type="button"
+            style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+            id="btn-tryout-GET-api-user-livreur--userID"
+            onclick="tryItOut('GET-api-user-livreur--userID');">Try it out ⚡</button>
+    <button
+            type="button"
+            style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+            id="btn-canceltryout-GET-api-user-livreur--userID"
+            onclick="cancelTryOut('GET-api-user-livreur--userID');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button
+            type="submit"
+            style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+            id="btn-executetryout-GET-api-user-livreur--userID" hidden>Send Request 💥</button>
+    
+</h3>
+
+<p>
+    <small class="badge badge-green">GET</small>
+
+
+    <b><code>/api/user/livreur/:userID</code></b>
+</p>
+
+
+
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+
+
+<p>
+<b><code>userID</code></b>&nbsp;&nbsp;<small>string</small>
+
+
+
+
+    
+        <input type="text"
+               name="userID"
+               data-endpoint="GET-api-user-livreur--userID"
+               data-component="url" required hidden>
+    
+
+<br>
+
+</p>
+
+
+
+
+</form>
+
+
+
+    
+        
+<h2 id="Endpoints-GET-api-user-client-userID">GET /api/user/client/:userID</h2>
+
+<p>
+
+</p>
+
+
+
+<span id="example-requests-GET-api-user-client--userID">
+<blockquote>Example request:</blockquote>
+
+
+
+<pre><code class="bash language-bash">curl --request GET \
+    --get "https://marhaba-backend.herokuapp.com/api/user/client/quae"  \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"
+</code></pre>
+
+
+
+<pre><code class="javascript language-javascript">const url = new URL(
+    "https://marhaba-backend.herokuapp.com/api/user/client/quae"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+.then(response =&gt; response.json())
+.then(json =&gt; console.log(json));
+</code></pre>
+
+
+</span>
+
+<span id="example-responses-GET-api-user-client--userID">
+
+
+<blockquote>Example response (404):</blockquote>
+
+
+<details class="annotation">
+    <summary>
+        <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+    </summary>
+    <pre><code class="language-http">
+access-control-allow-origin: *
+content-type: application/json; charset=utf-8 </code></pre>
+</details> 
+
+<pre>
+ 
+<!-- If response is a JSON string, prettify it. Otherwise, just print it -->
+<code class="language-json">{
+    "error": "User not found"
+}</code>
+ </pre>
+
+
+</span>
+<span id="execution-results-GET-api-user-client--userID" hidden>
+    <blockquote>Received response<span id="execution-response-status-GET-api-user-client--userID"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GET-api-user-client--userID"></code></pre>
+</span>
+<span id="execution-error-GET-api-user-client--userID" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GET-api-user-client--userID"></code></pre>
+</span>
+
+<form id="form-GET-api-user-client--userID"
+      data-method="GET"
+      data-path="/api/user/client/:userID"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{&#34;Content-Type&#34;:&#34;application/json&#34;,&#34;Accept&#34;:&#34;application/json&#34;}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GET-api-user-client--userID', this);">
+<h3>
+    Request&nbsp;
+    
+    <button
+            type="button"
+            style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+            id="btn-tryout-GET-api-user-client--userID"
+            onclick="tryItOut('GET-api-user-client--userID');">Try it out ⚡</button>
+    <button
+            type="button"
+            style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+            id="btn-canceltryout-GET-api-user-client--userID"
+            onclick="cancelTryOut('GET-api-user-client--userID');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button
+            type="submit"
+            style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+            id="btn-executetryout-GET-api-user-client--userID" hidden>Send Request 💥</button>
+    
+</h3>
+
+<p>
+    <small class="badge badge-green">GET</small>
+
+
+    <b><code>/api/user/client/:userID</code></b>
+</p>
+
+
+
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+
+
+<p>
+<b><code>userID</code></b>&nbsp;&nbsp;<small>string</small>
+
+
+
+
+    
+        <input type="text"
+               name="userID"
+               data-endpoint="GET-api-user-client--userID"
+               data-component="url" required hidden>
+    
+
+<br>
+
+</p>
+
+
+
+
+</form>
+
+
+
+    
+        
+<h2 id="Endpoints-GET-api-user-manager-userID">GET /api/user/manager/:userID</h2>
+
+<p>
+
+</p>
+
+
+
+<span id="example-requests-GET-api-user-manager--userID">
+<blockquote>Example request:</blockquote>
+
+
+
+<pre><code class="bash language-bash">curl --request GET \
+    --get "https://marhaba-backend.herokuapp.com/api/user/manager/est"  \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"
+</code></pre>
+
+
+
+<pre><code class="javascript language-javascript">const url = new URL(
+    "https://marhaba-backend.herokuapp.com/api/user/manager/est"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+.then(response =&gt; response.json())
+.then(json =&gt; console.log(json));
+</code></pre>
+
+
+</span>
+
+<span id="example-responses-GET-api-user-manager--userID">
+
+
+<blockquote>Example response (404):</blockquote>
+
+
+<details class="annotation">
+    <summary>
+        <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+    </summary>
+    <pre><code class="language-http">
+access-control-allow-origin: *
+content-type: application/json; charset=utf-8 </code></pre>
+</details> 
+
+<pre>
+ 
+<!-- If response is a JSON string, prettify it. Otherwise, just print it -->
+<code class="language-json">{
+    "error": "User not found"
+}</code>
+ </pre>
+
+
+</span>
+<span id="execution-results-GET-api-user-manager--userID" hidden>
+    <blockquote>Received response<span id="execution-response-status-GET-api-user-manager--userID"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GET-api-user-manager--userID"></code></pre>
+</span>
+<span id="execution-error-GET-api-user-manager--userID" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GET-api-user-manager--userID"></code></pre>
+</span>
+
+<form id="form-GET-api-user-manager--userID"
+      data-method="GET"
+      data-path="/api/user/manager/:userID"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{&#34;Content-Type&#34;:&#34;application/json&#34;,&#34;Accept&#34;:&#34;application/json&#34;}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GET-api-user-manager--userID', this);">
+<h3>
+    Request&nbsp;
+    
+    <button
+            type="button"
+            style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+            id="btn-tryout-GET-api-user-manager--userID"
+            onclick="tryItOut('GET-api-user-manager--userID');">Try it out ⚡</button>
+    <button
+            type="button"
+            style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+            id="btn-canceltryout-GET-api-user-manager--userID"
+            onclick="cancelTryOut('GET-api-user-manager--userID');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button
+            type="submit"
+            style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+            id="btn-executetryout-GET-api-user-manager--userID" hidden>Send Request 💥</button>
+    
+</h3>
+
+<p>
+    <small class="badge badge-green">GET</small>
+
+
+    <b><code>/api/user/manager/:userID</code></b>
+</p>
+
+
+
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+
+
+<p>
+<b><code>userID</code></b>&nbsp;&nbsp;<small>string</small>
+
+
+
+
+    
+        <input type="text"
+               name="userID"
+               data-endpoint="GET-api-user-manager--userID"
+               data-component="url" required hidden>
+    
+
+<br>
+
+</p>
+
+
+
+
+</form>
+
+
+
+    
+
+
+        
+    </div>
+    <div class="dark-box">
+        
+            <div class="lang-selector">
+                
+                    <a href="#" data-language-name="bash">bash</a>
+                
+                    <a href="#" data-language-name="javascript">javascript</a>
+                
+            </div>
+        
+    </div>
+</div>
+
+<script>
+    $(function () {
+        var languages = ["bash","javascript"];
+        setupLanguages(languages);
+    });
+</script>
+
+</body>
+</html>

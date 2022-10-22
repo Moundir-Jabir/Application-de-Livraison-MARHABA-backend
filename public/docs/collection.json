@@ -1,0 +1,425 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "marhaba-backend.herokuapp.com"
+        }
+    ],
+    "info": {
+        "name": "Application De Livraison MARHABA Backend Documentation",
+        "description": "",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "_postman_id": "15e096a6-7acf-4389-9c95-6c86769d67e0"
+    },
+    "item": [
+        {
+            "name": "Endpoints",
+            "item": [
+                {
+                    "request": {
+                        "url": {
+                            "protocol": "https",
+                            "host": "{{baseUrl}}",
+                            "path": "api/auth/register",
+                            "query": [],
+                            "raw": "https://{{baseUrl}}/api/auth/register"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"harum\",\n    \"email\": \"harum\",\n    \"password\": \"harum\",\n    \"role\": \"harum\"\n}"
+                        },
+                        "description": null,
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "request": {
+                        "url": {
+                            "protocol": "https",
+                            "host": "{{baseUrl}}",
+                            "path": "api/auth/login",
+                            "query": [],
+                            "raw": "https://{{baseUrl}}/api/auth/login"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"email\": \"harum\",\n    \"password\": \"harum\"\n}"
+                        },
+                        "description": null,
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "request": {
+                        "url": {
+                            "protocol": "https",
+                            "host": "{{baseUrl}}",
+                            "path": "api/auth/logout",
+                            "query": [],
+                            "raw": "https://{{baseUrl}}/api/auth/logout"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": null,
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                },
+                                {
+                                    "key": "set-cookie",
+                                    "value": [
+                                        "token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT"
+                                    ]
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application/json; charset=utf-8"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\n    \"message\": \"User Signout\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "request": {
+                        "url": {
+                            "protocol": "https",
+                            "host": "{{baseUrl}}",
+                            "path": "api/auth/emailVerification/:token",
+                            "query": [],
+                            "raw": "https://{{baseUrl}}/api/auth/emailVerification/:token",
+                            "variable": [
+                                {
+                                    "id": "token",
+                                    "key": "token",
+                                    "value": "ut",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": null,
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                },
+                                {
+                                    "key": "content-security-policy",
+                                    "value": "default-src 'none'"
+                                },
+                                {
+                                    "key": "x-content-type-options",
+                                    "value": "nosniff"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "text/html; charset=utf-8"
+                                }
+                            ],
+                            "code": 500,
+                            "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>JsonWebTokenError: jwt malformed<br> &nbsp; &nbsp;at Object.module.exports [as verify] (/Users/elmondhirjabir/Desktop/Application-de-Livraison-MARHABA-backend/node_modules/jsonwebtoken/verify.js:63:17)<br> &nbsp; &nbsp;at exports.userByToken (/Users/elmondhirjabir/Desktop/Application-de-Livraison-MARHABA-backend/middlewares/user.js:16:25)<br> &nbsp; &nbsp;at paramCallback (/Users/elmondhirjabir/Desktop/Application-de-Livraison-MARHABA-backend/node_modules/express/lib/router/index.js:415:7)<br> &nbsp; &nbsp;at param (/Users/elmondhirjabir/Desktop/Application-de-Livraison-MARHABA-backend/node_modules/express/lib/router/index.js:395:5)<br> &nbsp; &nbsp;at Function.process_params (/Users/elmondhirjabir/Desktop/Application-de-Livraison-MARHABA-backend/node_modules/express/lib/router/index.js:421:3)<br> &nbsp; &nbsp;at next (/Users/elmondhirjabir/Desktop/Application-de-Livraison-MARHABA-backend/node_modules/express/lib/router/index.js:280:10)<br> &nbsp; &nbsp;at Function.handle (/Users/elmondhirjabir/Desktop/Application-de-Livraison-MARHABA-backend/node_modules/express/lib/router/index.js:175:3)<br> &nbsp; &nbsp;at router (/Users/elmondhirjabir/Desktop/Application-de-Livraison-MARHABA-backend/node_modules/express/lib/router/index.js:47:12)<br> &nbsp; &nbsp;at Layer.handle [as handle_request] (/Users/elmondhirjabir/Desktop/Application-de-Livraison-MARHABA-backend/node_modules/express/lib/router/layer.js:95:5)<br> &nbsp; &nbsp;at trim_prefix (/Users/elmondhirjabir/Desktop/Application-de-Livraison-MARHABA-backend/node_modules/express/lib/router/index.js:328:13)</pre>\n</body>\n</html>\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "request": {
+                        "url": {
+                            "protocol": "https",
+                            "host": "{{baseUrl}}",
+                            "path": "api/auth/forgetpassword",
+                            "query": [],
+                            "raw": "https://{{baseUrl}}/api/auth/forgetpassword"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"email\": \"est\"\n}"
+                        },
+                        "description": null,
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "request": {
+                        "url": {
+                            "protocol": "https",
+                            "host": "{{baseUrl}}",
+                            "path": "api/auth/resetpassword/:token",
+                            "query": [],
+                            "raw": "https://{{baseUrl}}/api/auth/resetpassword/:token",
+                            "variable": [
+                                {
+                                    "id": "token",
+                                    "key": "token",
+                                    "value": "quidem",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"password\": \"eligendi\"\n}"
+                        },
+                        "description": null,
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "request": {
+                        "url": {
+                            "protocol": "https",
+                            "host": "{{baseUrl}}",
+                            "path": "api/user/livreur/:userID",
+                            "query": [],
+                            "raw": "https://{{baseUrl}}/api/user/livreur/:userID",
+                            "variable": [
+                                {
+                                    "id": "userID",
+                                    "key": "userID",
+                                    "value": "eligendi",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": null,
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application/json; charset=utf-8"
+                                }
+                            ],
+                            "code": 404,
+                            "body": "{\n    \"error\": \"User not found\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "request": {
+                        "url": {
+                            "protocol": "https",
+                            "host": "{{baseUrl}}",
+                            "path": "api/user/client/:userID",
+                            "query": [],
+                            "raw": "https://{{baseUrl}}/api/user/client/:userID",
+                            "variable": [
+                                {
+                                    "id": "userID",
+                                    "key": "userID",
+                                    "value": "quae",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": null,
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application/json; charset=utf-8"
+                                }
+                            ],
+                            "code": 404,
+                            "body": "{\n    \"error\": \"User not found\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "request": {
+                        "url": {
+                            "protocol": "https",
+                            "host": "{{baseUrl}}",
+                            "path": "api/user/manager/:userID",
+                            "query": [],
+                            "raw": "https://{{baseUrl}}/api/user/manager/:userID",
+                            "variable": [
+                                {
+                                    "id": "userID",
+                                    "key": "userID",
+                                    "value": "est",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": null,
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application/json; charset=utf-8"
+                                }
+                            ],
+                            "code": 404,
+                            "body": "{\n    \"error\": \"User not found\"\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "noauth"
+    }
+}

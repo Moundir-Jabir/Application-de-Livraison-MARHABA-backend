@@ -72,14 +72,16 @@ exports.forgetpassword = (req, res) => {
                 from: `"Marhaba Application" <${process.env.EMAIL}>`,
                 to: user.email,
                 subject: "Réinitialisation de mot de passe pour votre compte Marhaba",
-                html: `<p>cliquer sur ce <a href="${process.env.HOSTNAME}/api/auth/resetpassword/${token}">lien</a> pour réinitialiser votre mot de passe de votre compte Marhaba</p>`
-            }).then(e => res.send('An email is sent to reset your password'))
+                html: `<p>cliquer sur ce <a href="${process.env.FRONTENDHOSTNAME}/resetpassword/${token}">lien</a> pour réinitialiser votre mot de passe de votre compte Marhaba</p>`
+            }).then(e => res.json({
+                message: 'An email is sent to reset your password'
+            }))
         })
     })
 }
 
 exports.resetpassword = (req, res) => {
-    if(req.codeReset == req.profil.codeReset){
+    if (req.codeReset == req.profil.codeReset) {
         req.check('password', 'new password is required for reset').notEmpty().isLength({ min: 8, max: 20 }).withMessage('Password must between 8 and 20 caracteres')
         const errors = req.validationErrors()
         if (errors)
@@ -88,9 +90,13 @@ exports.resetpassword = (req, res) => {
             })
         let user = req.profil
         user.hashed_password = user.cryptPassword(req.body.password)
-        user.save().then(result => res.send(`Your password is reset succesfuly`))
+        user.save().then(result => res.json({
+            message: `Your password is reset succesfuly`
+        }))
     }
-    else{
-        return res.status(400).send('Invalid Token')
+    else {
+        return res.status(400).json({
+            erreur: 'Invalid Token'
+        })
     }
 }

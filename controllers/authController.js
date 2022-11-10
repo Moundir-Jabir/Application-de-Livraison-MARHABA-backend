@@ -17,6 +17,7 @@ exports.signup = (req, res) => {
         }).then(e => {
             user.hashed_password = undefined
             user.salt = undefined
+            user.image = undefined
             return res.json({ user, message: 'An email is sent to your email for verification' })
         })
     })
@@ -39,6 +40,7 @@ exports.signin = (req, res) => {
         res.cookie('token', token, { expire: new Date() + 8062000 })
         user.hashed_password = undefined
         user.salt = undefined
+        user.image = undefined
         return res.json({ token, user })
     })
 }

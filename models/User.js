@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const crypto = require('crypto')
 const { v1 } = require('uuid')
+const { profil } = require('../helpers/config')
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -26,8 +27,12 @@ const userSchema = new mongoose.Schema({
         trim: true
     },
     image: {
-        data: Buffer,
-        contentType: String
+        data: {
+            type: Buffer, default: profil
+        },
+        contentType: {
+            type: String, default: 'image/png'
+        }
     },
     role: {
         type: String,
